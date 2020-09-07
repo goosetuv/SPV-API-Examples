@@ -1,9 +1,15 @@
-<?php
+//Author: Laim McKenzie
+//Version: 1.0
+//Date: 07 Sept 2020
 
-    // Author: Laim McKenzie
-    // API Version: 0.1b
-    
-    $json = file_get_contents('http://api-url/api/?type=json');
-    $obj = json_decode($json);
-    print($obj[0]->Name . " - " . $obj[0]->Latest . " - " . $obj[0]->Release);
+<?php
+    $json = file_get_contents('https://ext.laim.scot/snowapi/api/1.0/?format=json');
+    $obj = json_decode($json, true);
+
+    foreach ($obj as $i) {
+        echo 'Name: ' . $i['Name'] . '<br>';
+        echo 'Version: ' . $i['Version'] . '<br>';
+        echo 'Release: ' . $i['Date'] . '<br>';
+        echo '<hr>';
+    }
 ?>
